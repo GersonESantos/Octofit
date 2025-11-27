@@ -23,7 +23,7 @@ flowchart LR
 
 ```
 
-1. **Set Context**: Select files that Copilot should consider in it's changes
+1. **Set Context**: Select files that Copilot should consider in its changes
 1. **Prompt Copilot**: Use natural language to describe the required changes.
 1. **Review Changes**: See proposed changes in-place in your code.
 1. **Accept or Discard**: Review each suggested edit and choose which to keep.
@@ -75,10 +75,11 @@ Let's use Copilot to change the website to display signed up students under each
 
    <details>
    <summary>Need help? 🤷</summary><br/>
+
    If the website is not loading, here are some things to check.
 
    - Restart the VS Code Debugger to make sure the latest version of the website is served.
-   - If you forgot the url, or closed the window, please review step 1.
+   - If you forgot the URL, or closed the window, please review step 1.
    - Try hard refreshing the webpage or opening in a private window so it downloads a fresh copy.
 
    </details>
@@ -89,15 +90,36 @@ Let's use Copilot to change the website to display signed up students under each
 
 1. With our new feature complete, please **commit** and **push** the changes to GitHub.
 
+### Quick run (PowerShell)
+
+If you prefer exact commands for staging, committing, and pushing the `src/static/` changes from Windows PowerShell (`pwsh.exe`), run:
+
+```pwsh
+# ensure you're on the exercise branch
+git checkout accelerate-with-copilot
+
+# stage the static files
+git add src/static/
+
+# commit with a short message
+git commit -m "Show participants on activity cards"
+
+# push to origin (upstream already set if you created the branch earlier)
+git push
+```
+
+These commands are safe to run inside the VS Code integrated terminal.
+
 1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
+
 If you don't get feedback, here are some things to check:
 
-- Make sure your commit the changes in the `src/static/` directory to the branch `accelerate-with-copilot` and pushed/synchronized to GitHub.
+- Make sure you commit the changes in the `src/static/` directory to the branch `accelerate-with-copilot` and pushed/synchronized to GitHub.
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>

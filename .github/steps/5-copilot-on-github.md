@@ -40,3 +40,36 @@ Both **Copilot pull request summaries** and **Copilot code review** have limited
 1. At the bottom, press the **Merge pull request** button. Nice work! You are all done! :tada:
 
 1. Wait a moment for Mona to check your work, provide feedback, and post a final review of this exercise!
+
+### Quick run (PowerShell)
+
+If you'd prefer exact commands for creating a pull request from PowerShell and merging locally, here are two common options.
+
+- Create a PR and view it in the browser using the GitHub CLI (`gh`):
+
+```pwsh
+# create the PR and open it in your browser for review
+gh pr create --base main --head accelerate-with-copilot --title "Improve student activity registration system" --body "Fix duplicate signup, show participants, add unregister UI"
+
+# open the created PR in your browser
+gh pr view --web
+```
+
+- Or merge locally with git (merge `accelerate-with-copilot` into `main` and push):
+
+```pwsh
+# fetch latest remote changes
+git fetch origin
+
+# switch to main and update
+git checkout main
+git pull origin main
+
+# merge the feature branch
+git merge --no-ff accelerate-with-copilot -m "Merge: Improve student activity registration system"
+
+# push merged main to origin
+git push origin main
+```
+
+Use the `gh` commands if you have GitHub CLI installed — they create the PR on GitHub for you. The `git` flow merges locally and pushes the result.

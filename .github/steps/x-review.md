@@ -2,7 +2,7 @@
 
 _Congratulations, you've completed this exercise and learned a lot about GitHub Copilot!_
 
-<img src="https://octodex.github.com/images/jetpacktocat.png" alt=celebrate width=200 align=right>
+<img src="https://octodex.github.com/images/jetpacktocat.png" alt="celebrate" width=200 align=right>
 
 Here's a recap of the GitHub Copilot features you learned:
 
@@ -20,3 +20,21 @@ Here's a recap of the GitHub Copilot features you learned:
   - Tailor Copilot to your project needs in [Customize your GitHub Copilot Experience](https://github.com/skills/customize-your-github-copilot-experience)
   - Tackle legacy COBOL code in [Modernize Your Legacy Code with GitHub Copilot](https://github.com/skills/modernize-your-legacy-code-with-github-copilot) exercise
   - Try GitHub Copilot Coding Agent in the [Expand your team with Copilot](https://github.com/skills/expand-your-team-with-copilot) exercise
+
+  ### Quick run (PowerShell)
+
+  If you'd like to clean up the feature branch locally and remotely after merging, run these PowerShell commands:
+
+  ```pwsh
+  # switch to main and update
+  git checkout main
+  git pull origin main
+
+  # delete the local feature branch
+  git branch -d accelerate-with-copilot
+
+  # delete the remote branch
+  git push origin --delete accelerate-with-copilot
+  ```
+
+  Only run the remote delete if you're sure you no longer need the branch.

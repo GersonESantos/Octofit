@@ -4,7 +4,7 @@ Welcome to your **"Getting Started with GitHub Copilot"** exercise! :robot:
 
 In this exercise, you will be using different GitHub Copilot features to work on a website that allows students of Mergington High School to sign up for extracurricular activities. 🎻 ⚽️ ♟️
 
-<img width="600" alt="screenshot of Mergington High School WebApp" src="https://github.com/user-attachments/assets/472398fd-1aa1-4084-b443-4e242deb30d9" />
+<img width="600" alt="Screenshot of Mergington High School web app" src="https://github.com/user-attachments/assets/472398fd-1aa1-4084-b443-4e242deb30d9" />
 
 ### 📖 Theory: Getting to know GitHub Copilot
 
@@ -26,7 +26,7 @@ As you work in your IDE, you'll most often interact with GitHub Copilot in the f
 
 As you work, you'll find GitHub Copilot can help out in several places across the `github.com` website and in your favorite coding environments such as VS Code, Jet Brains, and Xcode!
 
-For today's coding though, we will practice with VS Code in a pre-configured development environment known as a [GitHub Codespace](https://github.com/features/codespaces).
+For today's coding, we'll practice in VS Code using a pre-configured [GitHub Codespace](https://github.com/features/codespaces).
 
 > [!TIP]
 > You can learn more about current and upcoming features in the [GitHub Copilot Features](https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features) documentation.
@@ -125,3 +125,17 @@ If you don't get feedback, here are some things to check:
 - Make sure the branch was indeed published to your repository.
 
 </details>
+
+### Quick run (PowerShell)
+
+If you just want the exact commands to create and publish the branch used in this exercise (Windows PowerShell / `pwsh.exe`), run:
+
+```pwsh
+# create and switch to the new branch
+git checkout -b accelerate-with-copilot
+
+# publish the branch and set upstream
+git push -u origin accelerate-with-copilot
+```
+
+These commands are safe to run from the terminal inside VS Code.

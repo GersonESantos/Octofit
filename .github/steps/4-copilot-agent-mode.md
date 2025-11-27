@@ -60,7 +60,27 @@ If you don't get the desired results, you can try other models or provided follo
    > 🪧 **Note:** In this lab we explicitly include the `#codebase` tool to get the most repeatable results.
    > Feel free to try the prompt **without** `#codebase` and observe whether Agent Mode decides to gather broader project context on its own.
 
-1. When Copilot is finished, restart the debugger and inspect the results. If you like the results, press the **Keep** button. If not, try providing Copilot some feedback to refined the results.
+1. When Copilot is finished, restart the debugger and inspect the results. If you like the results, press the **Keep** button. If not, try providing Copilot some feedback to refine the results.
+
+### Quick run (PowerShell)
+
+If you want exact commands to stage, commit and push the UI changes that Agent Mode made (Windows PowerShell / `pwsh.exe`), run:
+
+```pwsh
+# ensure you're on the exercise branch
+git checkout accelerate-with-copilot
+
+# stage the updated files (static + backend if changed)
+git add src/static/ src/
+
+# commit with a short message
+git commit -m "Add unregister UI and fix refresh bug"
+
+# push to origin
+git push
+```
+
+These commands are safe to run inside the VS Code integrated terminal.
 
 1. Ask Copilot to fix a registration bug.
 
@@ -86,7 +106,28 @@ Your backend is now feature‑rich—but still has zero test coverage. Use Copil
    > Make sure to add any new dependencies to requirements.txt
    > ```
 
-1. As Copilot works on your prompt, different tools might need your approval.
+
+### Quick run (PowerShell) — tests
+
+If you want the exact commands to install test dependencies and run pytest locally from PowerShell, you can run:
+
+```pwsh
+# install requirements (add pytest, httpx or others to requirements.txt first)
+pip install -r requirements.txt
+
+# run tests
+pytest -q
+```
+
+After tests pass, stage and push the new tests and dependency changes:
+
+```pwsh
+git add tests/ requirements.txt
+git commit -m "Add backend tests and test deps"
+git push
+```
+
+As Copilot runs, different tools might need your approval.
 
    **🎯 Goal: Get all tests passing (green) — aim for a clean run! ✅**
 

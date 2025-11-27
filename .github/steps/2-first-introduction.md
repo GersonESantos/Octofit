@@ -20,7 +20,7 @@ In short, you can think of Copilot like a very specialized coworker. To be effec
 - **How do I make prompts?:** Being explicit and clear helps Copilot do the best job. But unlike some traditional systems, you can always clarify your direction with followup prompts.
 
 > [!TIP]
-> There several other ways to supplement Copilot's knowledge and capabilities like [chat participants](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-participants), [chat variables](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-variables), [slash commands](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#slash-commands-1), and [MCP tools](https://code.visualstudio.com/docs/copilot/chat/mcp-servers).
+> There are several other ways to supplement Copilot's knowledge and capabilities like [chat participants](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-participants), [chat variables](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-variables), [slash commands](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#slash-commands-1), and [MCP tools](https://code.visualstudio.com/docs/copilot/chat/mcp-servers).
 
 ### :keyboard: Activity: Use Copilot to fix our registration bug :bug:
 
@@ -188,11 +188,31 @@ Nice work fixing that bug and expanding the example activities! Now let's get ou
 
 1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson.
 
+### Quick run (PowerShell)
+
+If you prefer exact commands for staging, committing, and pushing the `src/app.py` changes from Windows PowerShell (`pwsh.exe`), run:
+
+```pwsh
+# ensure you're on the exercise branch
+git checkout accelerate-with-copilot
+
+# stage the file
+git add src/app.py
+
+# commit with a short message
+git commit -m "Fix duplicate signup and add sample activities"
+
+# push to origin (upstream already set if you created the branch earlier)
+git push
+```
+
+These commands are safe to run inside the VS Code integrated terminal.
+
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your pushed the `src/app.py` file changes to the branch `accelerate-with-copilot`.
+- Make sure you pushed the changes in `src/app.py` to the branch `accelerate-with-copilot`.
 
 </details>
