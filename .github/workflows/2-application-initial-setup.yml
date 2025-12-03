@@ -1,10 +1,11 @@
-name: Step 2
+name: Step 2 # octofit-tracker application initial setup
+
 on:
   push:
     branches:
-      - "accelerate-with-copilot"
+      - "build-octofit-app"
     paths:
-      - "src/app.py"
+      - "octofit-tracker/backend/requirements.txt"
 
 permissions:
   contents: read
@@ -12,7 +13,7 @@ permissions:
   issues: write
 
 env:
-  STEP_3_FILE: ".github/steps/3-copilot-edits.md"
+  STEP_3_FILE: ".github/steps/3-django-project-setup.md"
 
 jobs:
   find_exercise:
@@ -29,10 +30,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
@@ -54,17 +55,18 @@ jobs:
           comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
           file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
           edit-mode: replace
-
+          
       # START: Check practical exercise
 
-      - name: Check for additional student activities
-        id: check-additional-activities
+      # Search for the comment about registration validation
+      - name: Check Django version
+        id: check-django-version
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: src/app.py
-          keyphrase: '"description"'
-          minimum-occurrences: 4
+          text-file: octofit-tracker/backend/requirements.txt
+          keyphrase: 'Django==4.1'
+          minimum-occurrences: 1
           case-sensitive: false
 
       - name: Update comment - step results
@@ -78,8 +80,10 @@ jobs:
           vars: |
             step_number: 2
             results_table:
-              - description: "New activities added to src/app.py. We found ${{ steps.check-additional-activities.outputs.occurrences }} activities (minimum 4 required)"
-                passed: ${{ steps.check-additional-activities.outcome == 'success' }}
+              - description: "Check requirements.txt for Django version"
+                passed: ${{ steps.check-django-version.outcome == 'success' }}
+
+      # END: Check practical exercise
 
       - name: Fail job if not all checks passed
         if: contains(steps.*.outcome, 'failure')
@@ -95,10 +99,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit

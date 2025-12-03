@@ -1,9 +1,11 @@
-name: Step 4
+name: Step 4 # Setup the Django REST API framework
 
 on:
   push:
     branches:
-      - "accelerate-with-copilot"
+      - "build-octofit-app"
+    paths:
+      - "octofit-tracker/backend/octofit_tracker/**"
 
 permissions:
   contents: read
@@ -11,7 +13,7 @@ permissions:
   issues: write
 
 env:
-  STEP_5_FILE: ".github/steps/5-copilot-on-github.md"
+  STEP_5_FILE: ".github/steps/5-setup-frontend-react-framework.md"
 
 jobs:
   find_exercise:
@@ -28,10 +30,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
@@ -56,25 +58,25 @@ jobs:
 
       # START: Check practical exercise
 
-      - name: Check for pytest keyphrase in requirements.txt
-        id: check-for-pytest
+      - name: Check codespace url has been added to settings.py
+        id: check-codespace-url-settings
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: requirements.txt
-          keyphrase: pytest
+          text-file: octofit-tracker/backend/octofit_tracker/settings.py
+          keyphrase: '-8000.app.github.dev'
+          minimum-occurrences: 1
+          case-sensitive: false
 
-      - name: Check if tests directory exists
-        id: check-tests-dir
+      - name: Check for codespace url has been added to urls.py
+        id: check-codespace-url-urls
         continue-on-error: true
-        run: |
-          if find . -name "tests" -type d | grep -q .; then
-            echo "Tests directory found"
-            exit 0
-          else
-            echo "Tests directory not found"
-            exit 1
-          fi
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: octofit-tracker/backend/octofit_tracker/urls.py
+          keyphrase: '-8000.app.github.dev'
+          minimum-occurrences: 1
+          case-sensitive: false
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -87,10 +89,10 @@ jobs:
           vars: |
             step_number: 4
             results_table:
-              - description: "Checked for pytest in requirements.txt"
-                passed: ${{ steps.check-for-pytest.outcome == 'success' }}
-              - description: "Checked if tests are added in a separate directory"
-                passed: ${{ steps.check-tests-dir.outcome == 'success' }}
+              - description: "Check settings.py for codespace URL"
+                passed: ${{ steps.check-codespace-url-settings.outcome == 'success' }}
+              - description: "Check urls.py for codespace URL"
+                passed: ${{ steps.check-codespace-url-urls.outcome == 'success' }}
 
       # END: Check practical exercise
 
@@ -108,10 +110,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
